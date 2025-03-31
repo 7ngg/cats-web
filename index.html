@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purrfect Cat Facts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <span class="nav-logo">🐱</span>
+        <span class="nav-title">Purrfect Cats</span>
+      </div>
+      <div class="nav-center">
+        <a href="#" data-page="facts" class="nav-link">Cat Facts</a>
+        <a href="#" data-page="catalog" class="nav-link">Cat Catalog</a>
+        <a href="#" data-page="quiz" class="nav-link">Cat Quiz</a>
+        <a href="#" data-page="care" class="nav-link">Cat Care</a>
+        <a href="#" data-page="personality" class="nav-link">Personality Test</a>
+        <a href="#" data-page="health" class="nav-link">Health Guide</a>
+        <a href="#" data-page="toys" class="nav-link">Toys & Games</a>
+      </div>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search cat breeds...">
+        <button id="search-btn">🔍</button>
+      </div>
+      <div class="nav-right">
+        <div class="language-switcher">
+          <button id="lang-toggle" class="lang-toggle">🌐</button>
+          <div class="lang-dropdown">
+            <button class="lang-option" data-lang="en">English</button>
+            <button class="lang-option" data-lang="ru">Русский</button>
+            <button class="lang-option" data-lang="az">Azərbaycan</button>
+          </div>
+        </div>
+        <button id="theme-toggle" class="theme-toggle">🌙</button>
+      </div>
+    </nav>
+
+    <div id="app">
+      <div id="facts-page" class="page active">
+        <header>
+          <h1>Purrfect Cat Facts</h1>
+          <p>Discover fascinating facts about our feline friends!</p>
+        </header>
+        <main>
+          <div class="fact-container">
+            <div class="fact-card">
+              <div class="loading">Loading...</div>
+            </div>
+          </div>
+          <button id="new-fact-btn">Get New Fact</button>
+        </main>
+      </div>
+
+      <div id="catalog-page" class="page">
+        <header>
+          <h1>Cat Breeds Catalog</h1>
+          <p>Explore different cat breeds and learn about their unique characteristics</p>
+        </header>
+        <main>
+          <section class="gallery-section">
+            <div class="gallery-grid">
+              <div class="loading">Loading cats...</div>
+            </div>
+            <div class="pagination">
+              <button id="prev-page" class="pagination-btn" disabled>← Previous</button>
+              <div class="page-info">
+                Page <span id="current-page">1</span> of <span id="total-pages">1</span>
+              </div>
+              <button id="next-page" class="pagination-btn" disabled>Next →</button>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <section id="quiz-page" class="page">
+        <h1>Cat Quiz</h1>
+        <p>Test your knowledge about cats!</p>
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <div class="quiz-progress">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="quiz-score">Score: <span id="quiz-score">0</span></div>
+          </div>
+          <div class="quiz-content">
+            <div id="quiz-question"></div>
+            <div id="quiz-options"></div>
+          </div>
+          <div class="quiz-controls">
+            <button id="quiz-submit" class="btn">Submit Answer</button>
+            <button id="quiz-next" class="btn" style="display: none;">Next Question</button>
+          </div>
+        </div>
+        <div class="quiz-results" style="display: none;">
+          <h2>Quiz Results</h2>
+          <div class="results-content">
+            <div class="score-display"></div>
+            <div class="results-message"></div>
+            <button id="quiz-restart" class="btn">Try Again</button>
+            <div class="share-results">
+              <button class="btn share-btn">Share Results</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="care-page" class="page">
+        <h1>Cat Care Guide</h1>
+        <p>Essential tips for taking care of your feline friend</p>
+        <div class="care-container">
+          <div class="care-grid">
+            <div class="care-card">
+              <h3>Feeding</h3>
+              <ul>
+                <li>Proper portion sizes</li>
+                <li>Feeding schedule</li>
+                <li>Food types and nutrition</li>
+                <li>Water requirements</li>
+              </ul>
+            </div>
+            <div class="care-card">
+              <h3>Grooming</h3>
+              <ul>
+                <li>Brushing techniques</li>
+                <li>Bathing tips</li>
+                <li>Nail trimming</li>
+                <li>Ear cleaning</li>
+              </ul>
+            </div>
+            <div class="care-card">
+              <h3>Health</h3>
+              <ul>
+                <li>Regular check-ups</li>
+                <li>Vaccination schedule</li>
+                <li>Parasite prevention</li>
+                <li>Dental care</li>
+              </ul>
+            </div>
+            <div class="care-card">
+              <h3>Environment</h3>
+              <ul>
+                <li>Litter box setup</li>
+                <li>Scratching posts</li>
+                <li>Safe spaces</li>
+                <li>Play areas</li>
+              </ul>
+            </div>
+          </div>
+          <div class="care-checklist">
+            <h3>Daily Care Checklist</h3>
+            <div class="checklist-items">
+              <!-- Checklist items will be added dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="personality-page" class="page">
+        <h1>Cat Personality Test</h1>
+        <p>Discover which cat breed matches your personality!</p>
+        <div class="personality-container">
+          <div class="personality-quiz">
+            <div class="question-container">
+              <h3 id="personality-question"></h3>
+              <div class="options-container">
+                <!-- Options will be added dynamically -->
+              </div>
+            </div>
+            <div class="progress-indicator">
+              <div class="progress-dots">
+                <!-- Progress dots will be added dynamically -->
+              </div>
+            </div>
+          </div>
+          <div class="personality-results" style="display: none;">
+            <h2>Your Cat Match</h2>
+            <div class="match-content">
+              <div class="match-breed"></div>
+              <div class="match-description"></div>
+              <div class="personality-traits"></div>
+              <button class="btn share-match">Share Your Match</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="health-page" class="page">
+        <h1>Cat Health Guide</h1>
+        <p>Learn about common health issues and how to keep your cat healthy</p>
+        <div class="health-container">
+          <div class="health-issues">
+            <!-- Health issues will be added dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <section id="toys-page" class="page">
+        <h1>Cat Toys & Games</h1>
+        <p>Fun activities and DIY toys for your cat</p>
+        <div class="toys-container">
+          <div class="diy-toys">
+            <h3>DIY Cat Toys</h3>
+            <div class="toys-grid">
+              <!-- DIY toy instructions will be added dynamically -->
+            </div>
+          </div>
+          <div class="interactive-games">
+            <h3>Interactive Games</h3>
+            <div class="games-grid">
+              <!-- Interactive games will be added dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>Made with ❤️ for cat lovers</p>
+      </footer>
+    </div>
+
+    <!-- Modal for cat details -->
+    <div id="cat-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-body">
+          <div class="modal-image-container">
+            <img src="" alt="Cat" id="modal-cat-image">
+          </div>
+          <div class="modal-info">
+            <h3 id="modal-cat-name">Loading...</h3>
+            <div class="cat-details">
+              <p id="modal-cat-origin">Origin: Loading...</p>
+              <p id="modal-cat-temperament">Temperament: Loading...</p>
+              <p id="modal-cat-description">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="back-to-top" class="back-to-top">↑</button>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
